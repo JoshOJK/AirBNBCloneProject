@@ -19,8 +19,8 @@ Deletes an existing spot.
 * Require Authentication: true
 * Require proper authorization: Spot must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: Delete
+  * URL: /spot/:spotid
   * Body: none
 
 * Successful Response
