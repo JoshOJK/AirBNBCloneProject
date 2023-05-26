@@ -2,6 +2,11 @@
 First project, backend on AirBNB
 
 
+
+![schema](https://github.com/JoshOJK/AirBNBCloneProject/assets/91496865/9cc22152-daf2-40bc-840d-c25dd8a67cda)
+
+
+
 Where does API documentation come from?
 API documentation is not only a great reference tool for those working with a completed API, it is also extremely helpful for planning out the endpoints that need to be implemented. In many cases, a frontend development team will already have a frontend implemented or in development, they just need data from the backend through very specifically outlined API endpoints. In these scenarios, the API documentation will be provided by the frontend team, setting the expectations for each success and error response.
 
