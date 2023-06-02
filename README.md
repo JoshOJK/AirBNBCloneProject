@@ -3,7 +3,7 @@ First project, backend on AirBNB
 
 
 
-![schema](https://github.com/JoshOJK/AirBNBCloneProject/assets/91496865/9cc22152-daf2-40bc-840d-c25dd8a67cda)
+![schema](![Screenshot 2023-06-01 203827](https://github.com/JoshOJK/AirBNBCloneProject/assets/91496865/8dac45dc-59f3-4808-b3a0-9b7426307337))
 
 
 
