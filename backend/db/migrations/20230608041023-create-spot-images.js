@@ -20,7 +20,11 @@ module.exports = {
       },
       spotId: {
         type: Sequelize.INTEGER,
-        unique: true
+        unique: true,
+        references: {
+          model: 'Spots',
+          key: 'id'
+        }
       },
 
       createdAt: {

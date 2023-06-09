@@ -10,7 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       ownderId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users', key: 'id'
+        }
       },
       address: {
         type: Sequelize.VARCHAR,
