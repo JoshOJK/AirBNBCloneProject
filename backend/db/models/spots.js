@@ -3,50 +3,50 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Spots extends Model {
+  class Spot extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Spots.belongsTo(
-        models.Users,
+      Spot.belongsTo(
+        models.User,
         {foreignKey: 'ownerId'}
       ),
-      Spots.hasMany(
-        models.Reviews,
+      Spot.hasMany(
+        models.Review,
         {foreignKey: 'spotId'}
       )
-      Spots.hasMany(
-        models.SpotImages,
+      Spot.hasMany(
+        models.SpotImage,
         {foreignKey: 'spotId'}
       ),
-      Spots.hasOne(
-        models.Bookings,
+      Spot.hasOne(
+        models.Booking,
         {foreignKey: 'spotId'}
       )
     }
   }
-  Spots.init({
-    ownderId: {
+  Spot.init({
+    ownerId: {
       type: DataTypes.INTEGER,
     },
     address: {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING(50),
       allowNull: false,
       unique: true
     },
     city: {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     state: {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     country: {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     lat: {
@@ -58,11 +58,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     name : {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     description: {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING(50),
     },
     price: {
       type: DataTypes.DECIMAL,
@@ -84,7 +84,7 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {
     sequelize,
-    modelName: 'Spots',
+    modelName: 'Spot',
   });
-  return Spots;
+  return Spot;
 };
