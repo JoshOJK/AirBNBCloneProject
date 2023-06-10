@@ -6,6 +6,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
+const { Spot } = require('../../db/models')
 
 const validateSignup = [
   check('email')
@@ -51,4 +52,30 @@ router.post(
     }
   );
 
+
+  router.get('/:userId/spots', async (req, res, next) => {
+    let userId = req.params.userId
+
+    let spot = await Spot.findAll({
+        where: {
+            ownerId: userId
+        }
+    })
+    res.json(spot)
+})
+
+router.get('/users/:userId/spots', async (req, res, next) => {
+  let userId = req.params.userId
+
+  let spot = await Spot.findAll({
+      where: {
+          ownerId: userId
+      },
+      include: {
+          SpotImage
+      }
+  })
+
+  res.json(spot)
+})
 module.exports = router;

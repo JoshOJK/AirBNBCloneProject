@@ -68,16 +68,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL,
       allowNull: false
     },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
-    },
     avgStarRating: {
       type: DataTypes.DECIMAL
     }

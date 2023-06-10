@@ -32,23 +32,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     review: {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING,
       allowNull: false
     },
     stars: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
-    }
+
   }, {
     sequelize,
     modelName: 'Review',

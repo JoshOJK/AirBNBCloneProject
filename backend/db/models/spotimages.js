@@ -28,18 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       unique: true
     },
-
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
-
-  }
   }, {
     sequelize,
     modelName: 'SpotImage',
