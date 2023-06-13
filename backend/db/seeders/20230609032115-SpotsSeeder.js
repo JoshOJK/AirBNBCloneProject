@@ -16,7 +16,7 @@ module.exports = {
 
     return queryInterface.bulkInsert(options, [
         {
-          ownerId: userId[0],
+          ownerId: 1,
           address: '2454 Dienda Way',
           city: 'Vikendi',
           state: 'California',
@@ -28,7 +28,7 @@ module.exports = {
           price: 5000
       },
       {
-        ownerId: userId[1],
+        ownerId: 2,
         address: '54625 Sanhok Way',
         city: 'Ezreal',
         state: 'Illinois',
@@ -40,7 +40,7 @@ module.exports = {
         price: 4500
     },
     {
-      ownerId: userId[2],
+      ownerId: 3,
       address: '42 St',
       city: 'New York',
       state: 'New York',

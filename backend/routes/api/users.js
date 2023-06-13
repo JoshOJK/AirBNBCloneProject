@@ -61,21 +61,14 @@ router.post(
             ownerId: userId
         }
     })
-    res.json(spot)
+    if(spot) {
+      res.json(spot)
+  } else {
+      res.status(403).json
+  }
+
 })
 
-router.get('/users/:userId/spots', async (req, res, next) => {
-  let userId = req.params.userId
 
-  let spot = await Spot.findAll({
-      where: {
-          ownerId: userId
-      },
-      include: {
-          SpotImage
-      }
-  })
 
-  res.json(spot)
-})
 module.exports = router;

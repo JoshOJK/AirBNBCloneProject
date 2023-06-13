@@ -18,20 +18,20 @@ const spotsId = spots[0].map((spot) => spot.id)
 
     return queryInterface.bulkInsert(options, [
       {
-      userId: userId[0],
-      spotId: spotsId[0],
+      userId: 1,
+      spotId: 1,
       review: 'Place was a mess horrible view and a weird smell',
       stars: 1
     },
     {
-      userId: userId[1],
-      spotId: spotsId[1],
+      userId: 2,
+      spotId: 2,
      review: 'Great place very clean i loved it',
      stars: 5
      },
      {
-      userId: userId[2],
-      spotId: spotsId[2],
+      userId: 3,
+      spotId: 3,
       review: 'Was pretty mid not a lot to do not a lot to see',
       stars: 3
      }
@@ -43,7 +43,7 @@ const spotsId = spots[0].map((spot) => spot.id)
     options.tableName = 'Reviews';
     const op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-    userId: {[op.in]: [userId[0],userId[1], userId[2]]}
+    review: {[op.in]: ['Was pretty mid not a lot to do not a lot to see','Great place very clean i loved it', 'Place was a mess horrible view and a weird smell']}
    });
   }
 };
