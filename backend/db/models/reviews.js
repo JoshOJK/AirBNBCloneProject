@@ -1,4 +1,5 @@
 'use strict';
+
 const {
   Model
 } = require('sequelize');
@@ -37,11 +38,26 @@ module.exports = (sequelize, DataTypes) => {
     },
     review: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isNull(value) {
+          if(!value) {
+            throw new Error("Review text is required")
+          }
+        }
+      }
     },
     stars: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isMinMax(value)  {
+          if(value > 5 || value < 1) {
+            throw new Error("Stars must be an integer from 1 to 5")
+
+          }
+        }
+      }
     },
 
   }, {

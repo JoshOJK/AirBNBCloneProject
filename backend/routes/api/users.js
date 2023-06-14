@@ -7,24 +7,27 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { Spot } = require('../../db/models')
+const { Review } = require('../../db/models')
+const { ReviewImage } = require('../../db/models')
+const { SpotImage } = require('../../db/models')
+
 
 const validateSignup = [
   check('email')
-    .exists({ checkFalsy: true })
-    .isEmail()
-    .withMessage('Please provide a valid email.'),
+      .exists({ checkFalsy: true })
+      .withMessage('Please provide a valid email.'),
   check('username')
-    .exists({ checkFalsy: true })
-    .isLength({ min: 4 })
-    .withMessage('Please provide a username with at least 4 characters.'),
-  check('username')
-    .not()
-    .isEmail()
-    .withMessage('Username cannot be an email.'),
+      .exists({ checkFalsy: true })
+      .withMessage('Please provide a username with at least 4 characters.'),
+  check('firstName')
+      .exists({ checkFalsy: true })
+      .withMessage('Please provide a firstName'),
+  check('lastName')
+      .exists({ checkFalsy: true })
+      .withMessage('Please provide a lastName'),
   check('password')
-    .exists({ checkFalsy: true })
-    .isLength({ min: 6 })
-    .withMessage('Password must be 6 characters or more.'),
+      .exists({ checkFalsy: true })
+      .withMessage('Password must be 6 characters or more.'),
   handleValidationErrors
 ];
 
@@ -67,6 +70,60 @@ router.post(
       res.status(403).json
   }
 
+})
+
+router.get('/:userId/reviews', requireAuth, async (req, res, next) => {
+  let userId = req.params.userId
+  const reviews = await Review.findAll({
+    where: {
+      userId: userId
+    },
+    include: [
+      {
+        model: User,
+        attributes: [
+        "id",
+        "firstName",
+        "lastName"
+        ]
+    },
+      {
+      model: Spot,
+      attributes:[
+      "id",
+      "ownerId",
+      "address",
+      "city",
+      "state",
+      "country",
+      "lat",
+      "lng",
+      "name",
+      "price",
+    ]
+      },
+      {
+        model: ReviewImage,
+        attributes: [
+          "id",
+          "url"
+        ]
+      }
+    ]
+  })
+
+  for (const review of reviews) {
+    const spot = review.Spot;
+    const previewImage = await SpotImage.findOne({
+      attributes: ["url"],
+      where: { spotId: spot.id, preview: true },
+    });
+    if (previewImage) {
+      spot.dataValues.previewImage = previewImage.url;
+    }
+  }
+
+  return res.json(reviews)
 })
 
 
