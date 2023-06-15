@@ -11,10 +11,6 @@ module.exports = {
   up: async (queryInterface, Sequelize) =>  {
 
     options.tableName = 'Reviews'
-    const users = await queryInterface.sequelize.query("SELECT * FROM Users;")
-const userId = users[0].map((user) => user.id)
-const spots = await queryInterface.sequelize.query('SELECT * FROM Spots;')
-const spotsId = spots[0].map((spot) => spot.id)
 
     return queryInterface.bulkInsert(options, [
       {

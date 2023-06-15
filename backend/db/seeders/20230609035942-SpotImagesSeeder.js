@@ -10,23 +10,22 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   up: async (queryInterface, Sequelize) =>  {
     options.tableName = 'SpotImages'
-    const spots = await queryInterface.sequelize.query('SELECT * FROM Spots;')
-const spotsId = spots[0].map((spot) => spot.id)
+
     return queryInterface.bulkInsert(options, [
         {
         url: 'reviewPicture1.png',
         preview: true,
-        spotId: spotsId[0]
+        spotId: 1
       },
       {
         url: 'reviewPicture2.png',
         preview: false,
-        spotId: spotsId[1]
+        spotId: 2
       },
       {
         url: 'reviewPicture3.png',
         preview: true,
-        spotId: spotsId[2]
+        spotId: 3
       }
 
     ], {});

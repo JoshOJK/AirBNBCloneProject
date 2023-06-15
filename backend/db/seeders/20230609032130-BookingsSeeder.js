@@ -11,26 +11,23 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     options.tableName = 'Bookings'
-    const users = await queryInterface.sequelize.query("SELECT * FROM Users;")
-    const userId = users[0].map((user) => user.id)
-    const spots = await queryInterface.sequelize.query('SELECT * FROM Spots;')
-    const spotsId = spots[0].map((spot) => spot.id)
+
     return queryInterface.bulkInsert(options, [
         {
-       spotId: spotsId[0],
-       userId: userId[0],
+       spotId: 1,
+       userId: 1,
        startDate: '2023-11-19',
        endDate: '2023-12-29'
       },
       {
-        spotId: spotsId[1],
-        userId: userId[1],
+        spotId: 2,
+        userId: 2,
         startDate: '2021-1-22',
         endDate: '2021-2-12'
        },
        {
-        spotId: spotsId[2],
-        userId: userId[2],
+        spotId: 3,
+        userId: 3,
         startDate: '2022-9-23',
         endDate: '2022-10-23'
        }
