@@ -10,6 +10,7 @@ const { Spot } = require('../../db/models')
 const { Review } = require('../../db/models')
 const { ReviewImage } = require('../../db/models')
 const { SpotImage } = require('../../db/models')
+const { Booking } = require('../../db/models')
 
 
 const validateSignup = [
@@ -124,6 +125,48 @@ router.get('/:userId/reviews', requireAuth, async (req, res, next) => {
   }
 
   return res.json(reviews)
+})
+
+router.get('/:userId/bookings', requireAuth, async (req, res, next) => {
+  let user = req.user;
+  let results = {};
+
+  let bookings = await Booking.findAll({
+    where: {
+      userId: user.id
+    },
+    include: [
+      {
+        model: Spot,
+        attributes: [
+        "id",
+        "ownerId",
+        "address",
+        "city",
+        "state",
+        "country",
+        "lat",
+        "lng",
+        "name",
+        "price",
+
+        ]
+      }
+    ]
+
+  })
+
+  for (const booking of bookings) {
+      const spot = booking.Spot
+      const previewImage = await SpotImage.findOne({
+          attributes: ['url'],
+          where: { spotId: spot.id, preview: true },
+      });
+      if (previewImage) {
+          spot.dataValues.previewImage = previewImage.url;
+      }
+}
+res.json(bookings)
 })
 
 
