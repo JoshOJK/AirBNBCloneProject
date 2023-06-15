@@ -11,6 +11,7 @@ const { Review } = require('../../db/models')
 const { ReviewImage } = require('../../db/models')
 const { SpotImage } = require('../../db/models')
 const { Booking } = require('../../db/models')
+const sequelize = require('sequelize')
 
 
 const validateSignup = [
@@ -60,10 +61,36 @@ router.post(
   router.get('/:userId/spots', async (req, res, next) => {
     let userId = req.params.userId
 
+
+
+
     let spot = await Spot.findAll({
         where: {
             ownerId: userId
-        }
+        },
+        include: [
+          {
+              model: Review,
+              attributes: []
+          }
+      ],
+      attributes: [
+          'id',
+          'ownerId',
+          'address',
+          'city',
+          'state',
+          'country',
+          'lat',
+          'lng',
+          'name',
+          'description',
+          'price',
+          'createdAt',
+          'updatedAt',
+          [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']
+      ],
+      group: ["Spot.Id"],
     })
     if(spot) {
       res.json(spot)

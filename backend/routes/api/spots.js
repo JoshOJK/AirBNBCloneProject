@@ -97,7 +97,7 @@ router.get('/', async (req, res) => {
             'updatedAt',
             [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']
         ],
-        group: ['Spot.Id'],
+        group: ["Spot.Id"],
 
 
 
@@ -272,7 +272,7 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
     if (currentSpot) {
         if (user.id === currentSpot.ownerId) {
             await currentSpot.destroy()
-            return res.status(200).json('Successfully deleted')
+            return res.status(200).json({message: 'Successfully deleted'})
         } else return res.status(403).json("Forbiden")
     } else return res.status(404).json({message:"Spot couldn't be found"})
 })
