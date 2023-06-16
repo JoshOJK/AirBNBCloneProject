@@ -141,25 +141,7 @@ router.get('/', validateQuery, async (req, res) => {
             }
         ],
         where,
-        attributes: [
-            'id',
-            'ownerId',
-            'address',
-            'city',
-            'state',
-            'country',
-            'lat',
-            'lng',
-            'name',
-            'description',
-            'price',
-            'createdAt',
-            'updatedAt',
-            [sequelize.literal(`(SELECT AVG(stars) FROM "Reviews" WHERE "Reviews"."spotId" = "Spot"."Id")`),
-        "avgRating"
-        ]
-        ],
-        group: ["Spot.Id"],
+
 
         ...pag
 
@@ -173,6 +155,22 @@ router.get('/', validateQuery, async (req, res) => {
         if (previewImage) {
             spot.dataValues.previewImage = previewImage.dataValues.url;
         }
+
+        const spotRating = await Spot.findByPk(spot.id, {
+            include: [
+                {
+                    model: Review,
+                    attributes: []
+                }
+            ],
+            attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt",
+        [sequelize.fn("ROUND", sequelize.fn("AVG", sequelize.col("stars")), 2), "avgRating"]
+        ], group: ["Spot.id"]
+    })
+        const avgRating = spotRating.dataValues.avgRating;
+
+        if(spotRating) spot.dataValues.avgRating = avgRating
+
     };
 
     results.Spots = spots;
