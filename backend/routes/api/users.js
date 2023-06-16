@@ -93,7 +93,7 @@ router.post(
       group: ["Spot.Id"],
     })
     if(spot) {
-      res.json(spot)
+      res.json({Spot:spot})
   } else {
       res.status(403).json
   }
@@ -151,7 +151,7 @@ router.get('/:userId/reviews', requireAuth, async (req, res, next) => {
     }
   }
 
-  return res.json(reviews)
+  return res.json({Reviews: reviews})
 })
 
 router.get('/:userId/bookings', requireAuth, async (req, res, next) => {
@@ -193,7 +193,7 @@ router.get('/:userId/bookings', requireAuth, async (req, res, next) => {
           spot.dataValues.previewImage = previewImage.url;
       }
 }
-res.json(bookings)
+res.json({Bookings: bookings})
 })
 
 

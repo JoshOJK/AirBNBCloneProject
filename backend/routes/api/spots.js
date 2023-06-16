@@ -6,7 +6,7 @@ const { Op } = require('sequelize');
 const { Spot } = require('../../db/models')
 const { User } = require('../../db/models')
 const { SpotImage } = require('../../db/models')
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { requireAuth } = require('../../utils/auth');
 const { Review } = require('../../db/models')
 const { ReviewImage } = require('../../db/models')
 const { check } = require('express-validator');
@@ -43,6 +43,41 @@ const validateSpot = [
         .withMessage('Price per day is required'),
     handleValidationErrors
 ];
+const validateQuery = [
+    check('page')
+        .optional(true)
+        .isFloat({min: 1})
+        .withMessage("Page must be greater than or equal to 1"),
+    check('size')
+        .optional(true)
+        .isFloat({min: 1})
+        .withMessage("Size must be greater than or equal to 1"),
+    check('maxLng')
+        .optional(true)
+        .isFloat({max: 180})
+        .withMessage("Maximum longitude is invalid"),
+    check('minLng')
+        .optional(true)
+        .isFloat({min: -180})
+        .withMessage("Minumum longitude is invalid"),
+    check('maxLat')
+        .optional(true)
+        .isFloat({max: 90})
+        .withMessage("Maximum latitude is invalid"),
+    check('minLat')
+        .optional(true)
+        .isFloat({min: -90})
+        .withMessage("Minumum latitude is invalid"),
+    check('maxPrice')
+        .optional(true)
+        .isFloat({min: 0})
+        .withMessage("Maximum price must be greater than or equal to 0"),
+    check('minPrice')
+        .optional(true)
+        .isFloat({min: 0})
+        .withMessage("Minimum price must be greater than or equal to 0"),
+    handleValidationErrors
+]
 
 const validateReview = [
     check('review')
@@ -56,8 +91,8 @@ const validateReview = [
   ];
 
 
-router.get('/', async (req, res) => {
-    let { page, size } = req.query;
+router.get('/', validateQuery, async (req, res) => {
+    let { page, size, minPrice, maxPrice, minLat, maxLat, minLng, maxLng } = req.query;
 
     if(!page) page = 1;
     if(!size) size = 20;
@@ -72,6 +107,30 @@ router.get('/', async (req, res) => {
         pag.offset = size * (page - 1)
     }
 
+    const where = {};
+    if (minPrice) {
+        where.price = { [Op.gte]: minPrice};
+    }
+
+    if(maxPrice) {
+        where.price = { ...where.price, [Op.lte]: maxPrice}
+    }
+
+    if(minLat) {
+        where.lat = { [Op.gte]: minLat};
+    }
+
+    if(maxLat) {
+        where.lat = { ...where.lat, [Op.lte]: maxLat}
+    }
+
+    if(minLng) {
+        where.lng = { [Op.gte]: minLng};
+    }
+
+    if(maxLng) {
+        where.lng = { ...where.lng, [Op.lte]: maxLng}
+    }
 
     let results = {};
     const spots = await Spot.findAll({
@@ -81,6 +140,7 @@ router.get('/', async (req, res) => {
                 attributes: []
             }
         ],
+        where,
         attributes: [
             'id',
             'ownerId',
@@ -95,11 +155,13 @@ router.get('/', async (req, res) => {
             'price',
             'createdAt',
             'updatedAt',
-            [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']
+            [sequelize.literal("(SELECT AVG(stars) FROM Reviews WHERE Reviews.spotId = SpotId)"),
+        "avgRating"
+        ]
         ],
         group: ["Spot.Id"],
 
-
+        ...pag
 
     });
 
@@ -295,13 +357,13 @@ router.get('/:spotId/reviews', async (req, res, next) => {
     ]
     })
 
-    if(reviews.length) return res.json(reviews)
+    if(reviews.length) return res.json({Reviews: reviews})
     else return res.status(404).json({message:"Spot couldn't be found"})
 
 })
 
 router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res, next) => {
-    const spotId = req.params.spotId;
+    const spotId = parseInt(req.params.spotId);
     const { review, stars} = req.body;
     const userId = req.user.id;
 
@@ -346,7 +408,7 @@ if(spot){
                 }
             ]
         })
-        return res.json(booking)
+        return res.json({Booking:booking})
     } else {
         const noAuthBooking = await Booking.findAll({
             where: {
@@ -356,7 +418,7 @@ if(spot){
             "startDate",
             "endDate"]
         })
-        return res.json(noAuthBooking)
+        return res.json({Booking:noAuthBooking})
     }
 } return res.status(404).json({message: "Spot couldn't be found"})
 })
