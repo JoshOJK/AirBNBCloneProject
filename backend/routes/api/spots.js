@@ -291,10 +291,14 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
             const spotImage = await SpotImage.create({
                 url: url,
                 preview: preview,
-
+                spotId: spotId
             })
-            await currentSpot.addSpotImage(spotImage)
-            return res.json(spotImage)
+            const returnSpotImage = {
+                id: spotImage.id,
+                url: spotImage.url,
+                preview: spotImage.preview
+            }
+            return res.json(returnSpotImage)
         } else return res.status(403).json("Forbiden")
     } else return res.status(404).json({message:"Spot couldn't be found"})
 
