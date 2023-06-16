@@ -290,9 +290,10 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
         if (user.id === currentSpot.ownerId) {
             const spotImage = await SpotImage.create({
                 url: url,
-                preview: preview
+                preview: preview,
+
             })
-            currentSpot.addSpotImage(spotImage)
+            await currentSpot.addSpotImage(spotImage)
             return res.json(spotImage)
         } else return res.status(403).json("Forbiden")
     } else return res.status(404).json({message:"Spot couldn't be found"})
