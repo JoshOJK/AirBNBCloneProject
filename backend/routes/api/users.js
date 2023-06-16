@@ -90,7 +90,7 @@ router.post(
           'updatedAt',
           [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']
       ],
-      group: ["Spot.Id"],
+      group: ["Spot.id"],
     })
     if(spot) {
       res.json({Spot:spot})
