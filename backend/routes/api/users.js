@@ -156,7 +156,6 @@ router.get('/:userId/reviews', requireAuth, async (req, res, next) => {
 
 router.get('/:userId/bookings', requireAuth, async (req, res, next) => {
   let user = req.user;
-  let results = {};
 
   let bookings = await Booking.findAll({
     where: {

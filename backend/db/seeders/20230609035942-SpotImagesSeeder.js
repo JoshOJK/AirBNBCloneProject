@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         url: 'reviewPicture2.png',
-        preview: false,
+        preview: true,
         spotId: 2
       },
       {

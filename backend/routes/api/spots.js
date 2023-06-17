@@ -257,23 +257,25 @@ router.post('/', requireAuth, validateSpot, async (req, res, next) => {
     const spot = await Spot.create({ ownerId, address, city, state, country, lat, lng, name, description, price })
 
 
-    let safeSpot = {
-        id: spot.id,
-        ownerId: spot.ownerId,
-        address: spot.address,
-        city: spot.city,
-        state: spot.state,
-        country: spot.country,
-        lat: spot.lat,
-        lng: spot.lng,
-        name: spot.name,
-        description: spot.description,
-        price: spot.price
-    }
+    // let safeSpot = {
+    //     id: spot.id,
+    //     ownerId: spot.ownerId,
+    //     address: spot.address,
+    //     city: spot.city,
+    //     state: spot.state,
+    //     country: spot.country,
+    //     lat: spot.lat,
+    //     lng: spot.lng,
+    //     name: spot.name,
+    //     description: spot.description,
+    //     price: spot.price,
+    //     updatedAt: spot.updatedAt,
+
+    // }
 
 
 
-    return res.json(safeSpot)
+    return res.json(spot)
 })
 
 
@@ -297,7 +299,7 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
                 preview: spotImage.preview
             }
             return res.json(returnSpotImage)
-        } else return res.status(403).json("Forbiden")
+        } else return res.status(403).json({message:"Forbiden"})
     } else return res.status(404).json({message:"Spot couldn't be found"})
 
 })
@@ -324,7 +326,7 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res, next) => {
             await currentSpot.save()
             res.status(200)
             return res.json(currentSpot)
-        } else return res.status(403).json("Forbiden")
+        } else return res.status(403).json({message:"Forbidden"})
     } else return res.status(404).json({message:"Spot couldn't be found"})
 })
 
@@ -338,7 +340,7 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
         if (user.id === currentSpot.ownerId) {
             await currentSpot.destroy()
             return res.status(200).json({message: 'Successfully deleted'})
-        } else return res.status(403).json("Forbiden")
+        } else return res.status(403).json({message:"Forbidden"})
     } else return res.status(404).json({message:"Spot couldn't be found"})
 })
 

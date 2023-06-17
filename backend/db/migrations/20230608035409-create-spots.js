@@ -71,7 +71,7 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-      avgStarRating: {
+      avgRating: {
         type: Sequelize.DECIMAL
       }
     },
