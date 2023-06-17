@@ -257,23 +257,23 @@ router.post('/', requireAuth, validateSpot, async (req, res, next) => {
     const spot = await Spot.create({ ownerId, address, city, state, country, lat, lng, name, description, price })
 
 
-    // let safeSpot = {
-    //     id: ,
-    //     ownerId:
-    //     address: spot.address,
-    //     city: spot.city,
-    //     state: spot.state,
-    //     country: spot.country,
-    //     lat: spot.lat,
-    //     lng: spot.lng,
-    //     name: spot.name,
-    //     description: spot.description,
-    //     price: spot.price
-    // }
+    let safeSpot = {
+        id: spot.id,
+        ownerId: spot.ownerId,
+        address: spot.address,
+        city: spot.city,
+        state: spot.state,
+        country: spot.country,
+        lat: spot.lat,
+        lng: spot.lng,
+        name: spot.name,
+        description: spot.description,
+        price: spot.price
+    }
 
 
 
-    return res.json(spot)
+    return res.json(safeSpot)
 })
 
 
