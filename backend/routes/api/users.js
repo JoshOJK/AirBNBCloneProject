@@ -61,9 +61,6 @@ router.post(
   router.get('/:userId/spots', async (req, res, next) => {
     let userId = req.params.userId
 
-
-
-
     let spot = await Spot.findAll({
         where: {
             ownerId: userId
