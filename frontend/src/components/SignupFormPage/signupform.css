@@ -1,0 +1,8 @@
+.userinputsignup {
+    display: flex;
+    flex-direction: column;
+}
+
+.signuptext {
+    font-weight: lighter;
+}

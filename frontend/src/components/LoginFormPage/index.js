@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import './loginform.css';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function LoginFormPage() {
 
   return (
     <>
-      <h1>Log In</h1>
+      <h1 className="logintext" >Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Username or Email

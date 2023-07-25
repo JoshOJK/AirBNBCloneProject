@@ -1,0 +1,62 @@
+body {
+    background-color: white;
+}
+
+.logout {
+    color: black;
+}
+
+.homepagelink a, .loginoutlinks a  {
+    color: black;
+    font-weight: lighter;
+    text-decoration: none;
+    list-style: none;
+
+}
+
+
+.homepagelink a:visited, .loginoutlinks a:visited {
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+* {
+    list-style: none;
+    text-decoration: none;
+}
+
+.homepagelink a:hover, .loginoutlinks a:hover {
+    font-weight: bolder;
+}
+
+.loginoutlinks a:hover {
+    box-shadow: 5px 5px 5px 0px rgba(105,105,105,0.75);
+    border: 3px solid rgb(255,90,94);
+    border-radius: 6px;
+}
+.homepagelink {
+    display: flex;
+    margin-right: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1%;
+    width: 100px;
+}
+
+
+.loginoutlinks {
+    display: flex;
+    flex-flow: column;
+    align-content: flex-end;
+    width: 100%;
+}
+
+.login, .signup {
+    padding: 6px;
+
+}
+
+.homeLogo-png, img {
+    width: 100px;
+    height: 100px;
+}

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import * as sessionActions from '../../store/session';
 import './Navigation.css';
+// import '../../../public/images/airbnb-logo.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -24,17 +25,19 @@ function Navigation({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <li>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+      <li className='loginoutlinks'>
+        <NavLink className='login'to="/login">Log In</NavLink>
+        <NavLink className='signup' to="/signup">Sign Up</NavLink>
       </li>
     );
   }
 
   return (
     <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+      <li className='homepagelink' >
+        <NavLink className='home-btn' exact to="/">
+          <img className="homeLogo-png" src={"https://cdn.pixabay.com/photo/2018/05/08/21/28/airbnb-3384008_1280.png"} alt="airbnblogo"></img>
+        </NavLink>
       </li>
       {isLoaded && sessionLinks}
     </ul>
