@@ -21,7 +21,7 @@ module.exports = {
           country: 'United Nations',
           lat: 12.453,
           lng: 56.676,
-          name: 'Candice Mansion be any better',
+          name: 'Pleasure Point',
           description: 'A great place to discover disareal',
           price: 5000
       },

@@ -3,8 +3,11 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
+import HomePage from "./components/HomePage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import SpotDetals from "./components/SpotDetails";
+import CreateSpot from "./components/CreateSpot";
 // import "./SignupForm.css";
 
 function App() {
@@ -24,6 +27,15 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignupFormPage />
+        </Route>
+        <Route path="/spots/new">
+          <CreateSpot />
+        </Route>
+        <Route path='/spots/:id'>
+          <SpotDetals />
+        </Route>
+        <Route path='/'>
+          <HomePage />
         </Route>
       </Switch>
     )}

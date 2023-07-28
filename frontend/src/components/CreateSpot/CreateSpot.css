@@ -1,0 +1,46 @@
+.error-create {
+    color: #ff5a5f;
+  font-size: 14px;
+}
+/* Add the following styles to your existing CSS */
+
+.create-spot-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .create-spot-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .create-spot-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s ease-in-out;
+  }
+
+  .create-spot-form input:focus {
+    outline: none;
+    border-color: #ff5a5f;
+  }
+
+  .create-spot-btn {
+    background-color: #ff5a5f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .create-spot-btn:hover {
+    background-color: #e60000;
+  }

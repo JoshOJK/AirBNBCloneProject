@@ -1,0 +1,101 @@
+.homepage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .spotsTile {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .singularSpot {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  .spotImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .citystate {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #999;
+    margin-bottom: 10px;
+  }
+
+  .starimg {
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+  }
+
+  .spotName {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .price {
+    font-size: 16px;
+    color: #333;
+  }
+
+  .spotsNavigation {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .spotsNavigation:hover {
+    text-decoration: none;
+    color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .create-spot-link {
+    background-color: #ff5a5f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .create-spot-link:hover {
+    background-color: #e60000;
+  }
+  .create-spot {
+    margin-right: 10px; /* Add right margin to create some space */
+  }
+
+  .dropdown {
+    position: relative; /* Ensure the dropdown stays relative to the container */
+  }
+
+  .dropdown-content {
+    position: absolute;
+    top: 100%; /* Position the dropdown below the container */
+    right: 0; /* Align the dropdown to the right */
+    background-color: #fff; /* Optional: Add a background color for the dropdown */
+    border: 1px solid #ccc; /* Optional: Add a border for the dropdown */
+    border-radius: 4px; /* Optional: Add border radius for a rounded look */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for a floating effect */
+    padding: 10px; /* Optional: Add padding for better appearance */
+    min-width: 150px; /* Optional: Set a minimum width for the dropdown */
+  }
+
+/* Custom styles for the reviews section */

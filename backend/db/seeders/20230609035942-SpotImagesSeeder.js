@@ -13,17 +13,17 @@ module.exports = {
 
     return queryInterface.bulkInsert(options, [
         {
-        url: 'reviewPicture1.png',
+        url: 'https://asset.mansionglobal.com/editorial/san-francisco-s-victorians--small-in-number--high-in-history-and-beauty/assets/6KUTkIzKR0/sr_sf_lead-2560x2560.jpeg',
         preview: true,
         spotId: 1
       },
       {
-        url: 'reviewPicture2.png',
+        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSixOlCi13Zl_OTVhAUCesLnQpuN71_cUdvqQ&usqp=CAU',
         preview: true,
         spotId: 2
       },
       {
-        url: 'reviewPicture3.png',
+        url: 'https://cdn.decoist.com/wp-content/uploads/2014/06/Classic-brick-exterior-of-the-Downing-Street-house-kept-intact.jpg',
         preview: true,
         spotId: 3
       }

@@ -42,16 +42,14 @@ function SignupFormPage() {
   };
 
   return (
-    <>
-      <h1 className="signuptext">Sign Up</h1>
-      <form onSubmit={handleSubmit} className="userinputsignup">
+    <div className="signup-container">
+      <form onSubmit={handleSubmit} className="signup-form">
         <label >
           Email
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
         </label>
         {errors.email && <p>{errors.email}</p>}
@@ -61,7 +59,7 @@ function SignupFormPage() {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
+
           />
         </label>
         {errors.username && <p>{errors.username}</p>}
@@ -71,7 +69,7 @@ function SignupFormPage() {
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            required
+
           />
         </label>
         {errors.firstName && <p>{errors.firstName}</p>}
@@ -81,7 +79,7 @@ function SignupFormPage() {
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            required
+
           />
         </label>
         {errors.lastName && <p>{errors.lastName}</p>}
@@ -91,7 +89,7 @@ function SignupFormPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+
           />
         </label>
         {errors.password && <p>{errors.password}</p>}
@@ -101,13 +99,13 @@ function SignupFormPage() {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            required
+
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         <button type="submit">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 

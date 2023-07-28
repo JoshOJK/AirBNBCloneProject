@@ -1,0 +1,119 @@
+/* Add the following styles to your existing CSS */
+
+/* Custom styles for the reviews section */
+
+.spot-reviews {
+  margin-top: 20px;
+}
+
+.review {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-person {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0070c9;
+}
+
+.review-date {
+  font-size: 14px;
+  color: #888;
+}
+
+.review-text {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.no-reviews {
+  font-size: 16px;
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}
+
+/* Additional styling for the spot details section */
+
+.spot-details h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.spot-details .image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.spot-details .image-gallery img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.spot-details .image-gallery img:hover {
+  transform: scale(1.1);
+}
+
+.spot-details .address-container {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.spot-details .address-container i {
+  margin-right: 5px;
+}
+
+.spot-details .description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.spot-details .price-container {
+  display: flex;
+  align-items: center;
+}
+
+.spot-details .price-container .price {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.spot-details .book-btn {
+  background-color: #ff5a5f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.spot-details .book-btn:hover {
+  background-color: #e60000;
+}
+.spot-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
