@@ -15,10 +15,9 @@ const SpotDetails = () => {
 
     useEffect(() => {
       dispatch(fetchSpotDetails(id));
-      if (!review) {
         dispatch(fetchSpotReviews(id));
-      }
-    }, [dispatch, id, review]);
+
+    }, [dispatch, id]);
 
   if (!spot) {
     return <h1>...Loading</h1>
@@ -56,6 +55,7 @@ const SpotDetails = () => {
         </div>
         {review && review.length > 0 ? (
           <div className="spot-reviews">
+            <NavLink className="review-button" to={`/spots/${id}/review/new`}>add a Review</NavLink>
             <h2>Reviews</h2>
             {review?.map((review) => (
               <div key={review.id} className="review">
@@ -71,7 +71,10 @@ const SpotDetails = () => {
             ))}
           </div>
         ) : (
+          <>
           <div className="no-reviews">No reviews yet for this spot.</div>
+          <NavLink className="review-button" to={`/spots/${id}/review/new`}>New Review</NavLink>
+          </>
         )}
       </div>
     </div>

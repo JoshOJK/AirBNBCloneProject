@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SpotDetals from "./components/SpotDetails";
 import CreateSpot from "./components/CreateSpot";
+import CreateReviewForm from "./components/CreateReview";
 // import "./SignupForm.css";
 
 function App() {
@@ -28,10 +29,13 @@ function App() {
         <Route path="/signup">
           <SignupFormPage />
         </Route>
+        <Route exact path='/spots/:id/review/new'>
+      <CreateReviewForm />
+        </Route>
         <Route path="/spots/new">
           <CreateSpot />
         </Route>
-        <Route path='/spots/:id'>
+        <Route exact path='/spots/:id'>
           <SpotDetals />
         </Route>
         <Route path='/'>

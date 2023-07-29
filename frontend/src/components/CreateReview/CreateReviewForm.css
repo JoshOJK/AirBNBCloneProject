@@ -1,0 +1,9 @@
+.new-review-form .star {
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.new-review-form .star.active {
+    color: black;
+  }

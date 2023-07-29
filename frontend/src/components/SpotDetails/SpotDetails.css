@@ -117,3 +117,16 @@
   align-items: center;
   height: 100%;
 }
+/* Style for the "review-button" class */
+.review-button {
+  display: inline;
+  color: grey;
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Hover effect for the "review-button" class */
+.review-button:hover {
+  color: black;
+}
