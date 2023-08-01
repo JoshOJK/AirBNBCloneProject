@@ -9,6 +9,9 @@ import Navigation from "./components/Navigation";
 import SpotDetals from "./components/SpotDetails";
 import CreateSpot from "./components/CreateSpot";
 import CreateReviewForm from "./components/CreateReview";
+import ManageSpot from "./components/ManageSpots";
+import DeleteForm from "./components/DeleteForm";
+import UpdateForm from "./components/UpdateForm";
 // import "./SignupForm.css";
 
 function App() {
@@ -29,8 +32,17 @@ function App() {
         <Route path="/signup">
           <SignupFormPage />
         </Route>
+        <Route path="/user/:userId/spots">
+          <ManageSpot />
+        </Route>
         <Route exact path='/spots/:id/review/new'>
       <CreateReviewForm />
+        </Route>
+        <Route path="/spots/:spotId/delete">
+          <DeleteForm />
+        </Route>
+        <Route path="/spots/:spotId/update">
+          <UpdateForm />
         </Route>
         <Route path="/spots/new">
           <CreateSpot />
@@ -38,7 +50,7 @@ function App() {
         <Route exact path='/spots/:id'>
           <SpotDetals />
         </Route>
-        <Route path='/'>
+        <Route exact path='/'>
           <HomePage />
         </Route>
       </Switch>

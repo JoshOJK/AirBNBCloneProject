@@ -61,7 +61,7 @@ router.post(
   router.get('/:userId/spots', async (req, res, next) => {
     let userId = req.params.userId
 
-    let spot = await Spot.findAll({
+    let spots = await Spot.findAll({
         where: {
             ownerId: userId
         },
@@ -89,12 +89,21 @@ router.post(
       ],
       group: ["Spot.id"],
     })
-    if(spot) {
-      res.json({Spot:spot})
+    for (const spot of spots) {
+      const previewImage = await SpotImage.findOne({
+          attributes: ['url'],
+          where: { spotId: spot.id, preview: true },
+      });
+      if (previewImage) {
+          spot.dataValues.previewImage = previewImage.dataValues.url;
+      }
+    if(spots) {
+      res.json({Spot:spots})
   } else {
       res.status(403).json
   }
 
+}
 })
 
 router.get('/:userId/reviews', requireAuth, async (req, res, next) => {

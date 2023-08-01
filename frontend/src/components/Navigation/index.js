@@ -11,6 +11,7 @@ function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
   const [showDropdown, setShowDropdown] = useState(false);
 
+
   const toggleDropdown = () => {
     setShowDropdown(prevState => !prevState);
   };
@@ -42,7 +43,10 @@ function Navigation({ isLoaded }) {
               <>
                 <ProfileButton user={sessionUser} />
                 <li>
+
+                  <NavLink to={`/user/${sessionUser.id}/spots`}>Manage Spots</NavLink>
                   <button onClick={logout}>Log Out</button>
+
                 </li>
               </>
             ) : (

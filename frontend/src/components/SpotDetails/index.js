@@ -55,7 +55,7 @@ const SpotDetails = () => {
         </div>
         {review && review.length > 0 ? (
           <div className="spot-reviews">
-            <NavLink className="review-button" to={`/spots/${id}/review/new`}>add a Review</NavLink>
+            <NavLink className="review-button" to={`/spots/${id}/review/new`}>New Review</NavLink>
             <h2>Reviews</h2>
             {review?.map((review) => (
               <div key={review.id} className="review">
