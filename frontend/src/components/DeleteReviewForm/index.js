@@ -2,31 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteSpot } from "../../store/spots";
-import "./DeleteForm.css"
+import { deleteReview } from "../../store/reviews";
+import { fetchSpotDetails} from "../../store/spots";
+import {fetchSpotReviews} from "../../store/reviews"
 
 
-const DeleteForm = ({spot}) => {
+const DeleteReviewForm = ({reviewId}) => {
     const dispatch = useDispatch();
-
-
-
-
+    const { id } = useParams();
 
     const handleDelete = () => {
-            const deletedSpot = dispatch(deleteSpot(spot))
-            if(deletedSpot) {
+            const deletedReview = dispatch(deleteReview(reviewId))
+            if(deletedReview) {
                 window.location.reload();
+                dispatch(fetchSpotDetails(id));
+                dispatch(fetchSpotReviews(id));
         }
     }
 
     return (
         <div className="delete-container">
-        <h2 className="delete-text">You are about to delete your spot are you sure you'd like to delete your spot</h2>
+        <h2 className="delete-text">You are about to delete your review are you sure</h2>
             <button onClick={() => handleDelete()}>YES</button>
             <button onClick={() => window.location.reload()}>NO</button>
         </div>
     )
 }
 
-export default DeleteForm;
+export default DeleteReviewForm;

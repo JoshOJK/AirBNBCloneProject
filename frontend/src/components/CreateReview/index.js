@@ -39,7 +39,7 @@ const CreateReviewForm = () => {
                   }
                 }
               );
-            if(postedReview) history.push(`/spots/${id}`)
+            if(postedReview) window.location.reload();
 
       }
 

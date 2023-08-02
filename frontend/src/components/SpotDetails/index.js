@@ -2,15 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from 'react-router-dom';
 import { fetchSpotDetails } from '../../store/spots'
-import { fetchSpotReviews } from "../../store/reviews";
+import {  fetchSpotReviews } from "../../store/reviews";
 import './SpotDetails.css'; // Make sure to import the CSS file
+import  CreateReviewForm  from "../CreateReview";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import  DeleteReviewForm  from "../DeleteReviewForm"
 
 const SpotDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const sessionUser = useSelector(state => state.session.user)
   const spot = useSelector((state) => state.spots[id]);
   const review = useSelector((state) => state.reviews[id])
+  console.log(review)
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
 
 
     useEffect(() => {
@@ -55,7 +61,11 @@ const SpotDetails = () => {
         </div>
         {review && review.length > 0 ? (
           <div className="spot-reviews">
-            <NavLink className="review-button" to={`/spots/${id}/review/new`}>New Review</NavLink>
+            {/* <NavLink className="review-button" to={`/spots/${id}/review/new`}>New Review</NavLink> */}
+            <OpenModalMenuItem
+              itemText="New Review"
+              modalComponent={< CreateReviewForm />}
+            />
             <h2>Reviews</h2>
             {review?.map((review) => (
               <div key={review.id} className="review">
@@ -66,14 +76,26 @@ const SpotDetails = () => {
                     year: 'numeric'
                   })}</span>
                 </div>
+                <div>
                 <div className="review-text">{review?.review}</div>
+
+        {review?.userId === sessionUser?.id && (
+           <OpenModalMenuItem
+           itemText="Delete"
+           modalComponent={<DeleteReviewForm reviewId={review.id}/>}
+         />
+        )}
+      </div>
               </div>
             ))}
           </div>
         ) : (
           <>
           <div className="no-reviews">No reviews yet for this spot.</div>
-          <NavLink className="review-button" to={`/spots/${id}/review/new`}>New Review</NavLink>
+          <OpenModalMenuItem
+              itemText="New Review"
+              modalComponent={< CreateReviewForm />}
+            />
           </>
         )}
       </div>

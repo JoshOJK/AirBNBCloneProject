@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormPage";
-import SignupFormPage from "./components/SignupFormPage";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -12,6 +10,8 @@ import CreateReviewForm from "./components/CreateReview";
 import ManageSpot from "./components/ManageSpots";
 import DeleteForm from "./components/DeleteForm";
 import UpdateForm from "./components/UpdateForm";
+
+
 // import "./SignupForm.css";
 
 function App() {
@@ -26,20 +26,11 @@ function App() {
     <Navigation isLoaded={isLoaded} />
     {isLoaded && (
       <Switch>
-        <Route path='/login'>
-          <LoginFormPage />
-        </Route>
-        <Route path="/signup">
-          <SignupFormPage />
-        </Route>
         <Route path="/user/:userId/spots">
           <ManageSpot />
         </Route>
         <Route exact path='/spots/:id/review/new'>
       <CreateReviewForm />
-        </Route>
-        <Route path="/spots/:spotId/delete">
-          <DeleteForm />
         </Route>
         <Route path="/spots/:spotId/update">
           <UpdateForm />

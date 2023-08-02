@@ -35,30 +35,8 @@ function Navigation({ isLoaded }) {
           </NavLink>
         </li>
         )}
-      <li className="dropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-        <span className="dropdown-btn">Menu</span>
-        {showDropdown && (
-          <ul className="dropdown-content">
-            {sessionUser ? (
-              <>
-                <ProfileButton user={sessionUser} />
-                <li>
+          <ProfileButton user={sessionUser} />
 
-                  <NavLink to={`/user/${sessionUser.id}/spots`}>Manage Spots</NavLink>
-                  <button onClick={logout}>Log Out</button>
-
-                </li>
-              </>
-            ) : (
-              <li className='loginoutlinks'>
-                <NavLink className='login' to="/login">Log In</NavLink>
-                <span className="divider">|</span>
-                <NavLink className='signup' to="/signup">Sign Up</NavLink>
-              </li>
-            )}
-          </ul>
-        )}
-      </li>
     </ul>
   );
 }

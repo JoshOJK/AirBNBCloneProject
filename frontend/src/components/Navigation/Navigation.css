@@ -2,6 +2,11 @@ body {
     background-color: white;
 }
 
+
+.hidden {
+  display: none;
+}
+
 .logout {
     color: black;
 }

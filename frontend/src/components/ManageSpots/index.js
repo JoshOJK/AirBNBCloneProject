@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserSpots } from "../../store/spots";
 import "./ManageSpots.css"
+import  DeleteForm from "../DeleteForm/index.js";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import reviewReducer from "../../store/reviews";
 
 const ManageSpot = () => {
     const { userId } = useParams();
@@ -38,16 +41,22 @@ if(!spotsArray.length) {
         <>
        <ul className="spotsTile">
            {Array.isArray(spotsArray) && spotsArray?.map((spot) => (
+            <div>
              <NavLink className="spotsNavigation" to={`/spots/${spot.id}`} title={spot.name} key={spot.id}>
                <li key={spot.id} className="singularSpot">
                  <img className='spotImage' src={spot.previewImage} alt="Spot Preview" />
                  <h1 className="citystate">{spot.city}, {spot.state} <img className="starimg" src='https://static.vecteezy.com/system/resources/previews/001/189/080/original/star-png.png' alt="Star Rating" />{spot.avgRating}</h1>
                  <h2 className="spotName">{spot.name}</h2>
                  <p className="price">${spot.price}/night</p>
-                 <NavLink to={`/spots/${spot.id}/delete`}>delete</NavLink>
                  <NavLink to={`/spots/${spot.id}/update`}>update</NavLink>
                </li>
+
              </NavLink>
+             <OpenModalMenuItem
+              itemText="Delete"
+              modalComponent={<DeleteForm spot={spot.id}/>}
+            />
+             </div>
            ))}
 
          </ul>

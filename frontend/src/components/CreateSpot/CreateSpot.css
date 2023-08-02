@@ -9,6 +9,14 @@
     margin: 0 auto;
     padding: 20px;
   }
+.create-spot-container{
+    background-color: white;
+    border: 1px solid black;
+    position: fixed;
+    top: 25%;
+    left: 45%;
+}
+
 
   .create-spot-form {
     display: flex;

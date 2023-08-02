@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { updateUserSpot, fetchSpotDetails } from "../../store/spots";
 
 
+
 const UpdateForm = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
@@ -171,7 +172,7 @@ const UpdateForm = () => {
                 onChange={handleStringData}/>
 
             </div>
-            <button type="submit" className="create-spot-btn" >Create Spot</button>
+            <button type="submit" className="create-spot-btn" >Update Spot</button>
         </form>
     </section>
     )
