@@ -14,8 +14,8 @@ const SpotDetails = () => {
   const sessionUser = useSelector(state => state.session.user)
   const spot = useSelector((state) => state.spots[id]);
   const review = useSelector((state) => state.reviews[id])
-  console.log(review)
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [galleryExpanded, setGalleryExpanded] = useState(false);
 
 
 
@@ -32,6 +32,13 @@ const SpotDetails = () => {
   const handleImageChange = (index) => {
     setCurrentImageIndex(index);
   };
+
+  const handleExpandGallery = () => {
+    setGalleryExpanded(!galleryExpanded);
+    const gallery = document.querySelector(".image-gallery");
+    gallery.classList.toggle("expanded");
+  };
+
 
   return (
     <div className="spot-container">
@@ -50,22 +57,32 @@ const SpotDetails = () => {
             />
           ))}
         </div>
+        {spot?.SpotImages && spot?.SpotImages.length > 1 && (
+  <a href="#" className="expand-gallery-link" onClick={handleExpandGallery}>
+    {galleryExpanded ? "Collapse Gallery" : "Expand Gallery"}
+  </a>
+)}
         <div className="address-container">
           <i className="fas fa-map-marker-alt"></i>
           <span className="address">{spot?.address}, {spot?.country}</span>
         </div>
+        <p>Hosted by {sessionUser.username}</p>
         <p className="description">{spot?.description}</p>
         <div className="price-container">
           <span className="price">${spot?.price} per night</span>
-          <NavLink className="book-btn" to={`/booking/${spot?.id}`}>Book Now</NavLink>
+          <button className="book-btn" onClick={() => alert("Feature coming soon")}>Book Now</button>
         </div>
-        {review && review.length > 0 ? (
+        {review && review.length > 0  ? (
           <div className="spot-reviews">
-            {/* <NavLink className="review-button" to={`/spots/${id}/review/new`}>New Review</NavLink> */}
-            <OpenModalMenuItem
+            {sessionUser ? (
+              <OpenModalMenuItem
               itemText="New Review"
               modalComponent={< CreateReviewForm />}
             />
+            ): (
+              <></>
+            )}
+
             <h2>Reviews</h2>
             {review?.map((review) => (
               <div key={review.id} className="review">

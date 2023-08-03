@@ -44,27 +44,86 @@
   margin-top: 20px;
 }
 
+.expand-gallery-link {
+  font-size: 12px; /* Adjust font size to make it smaller */
+  color: grey; /* Link text color */
+  text-decoration: underline; /* Add underline effect */
+  cursor: pointer;
+  transition: color 0.3s ease; /* Add smooth transition for color change */
+}
+
+/* On hover, change the link color for a more modern look */
+.expand-gallery-link:hover {
+  color: black; /* Lighter shade of the link color on hover */
+}
+
+/* Optional: If you want to make the link look pressed when clicked */
+
 /* Additional styling for the spot details section */
 
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Default small size for all images */
+.image-gallery img {
+  width: 100px;
+  height: auto;
+  margin: 5px; /* Optional: Add some margin between images */
+}
+
+/* Larger size for the first image */
+.image-gallery img:first-child {
+  width: 200px;
+  height: auto;
+  margin: 5px; /* Optional: Add some margin for consistency */
+}
+
+/* Stacking the rest of the images on top of each other with a max height of 2 images */
+.image-gallery img:not(:first-child) {
+  display: none;
+}
+
+/* Show the first two images when the container has the "expanded" class */
+.image-gallery.expanded img:not(:first-child) {
+  display: block;
+}
+
+/* Add any additional styles for the images as needed */
+.image-gallery img.active {
+  /* Styles for the active image (if applicable) */
+}
 .spot-details h1 {
   font-size: 24px;
   margin-bottom: 10px;
 }
-
-.spot-details .image-gallery {
+.image-gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  justify-content: center;
 }
-
-.spot-details .image-gallery img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
+.image-gallery img:not(:first-child) {
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  width: 100px;
+  height: auto;
+  margin: 5px; /* Optional: Add some margin between images */
 }
+
+/* Larger size for the first image */
+.image-gallery img:first-child {
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  width: 200px;
+  height: auto;
+  margin: 5px; /* Optional: Add some margin for consistency */
+}
+
+
 
 .spot-details .image-gallery img:hover {
   transform: scale(1.1);

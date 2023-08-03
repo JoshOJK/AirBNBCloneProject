@@ -27,6 +27,12 @@ function LoginFormModal() {
     );
   };
 
+  const demoLogin = () => {
+    setCredential('Demo-lition')
+    setPassword('password')
+    setErrors({})
+  }
+
   return (
     <div  className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
@@ -48,9 +54,12 @@ function LoginFormModal() {
             required
           />
         </label>
+        <div className="button-wrap">
+        <button className="demo-button" onClick={demoLogin}>Log in as demo user</button>
         {errors.credential && <p>{errors.credential}</p>}
-        <button type="submit">Log In</button>
-      </form>
+        <button className="login-button" type="submit" disabled={credential.length < 4 || password.length < 6}>Log In</button>
+        </div>
+    </form>
     </div>
   );
 }

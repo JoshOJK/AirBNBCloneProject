@@ -18,8 +18,8 @@ body {
     background-color: white;
     border: 1px solid black;
     position: fixed;
-    top: 25%;
-    left: 45%;
+    top: 10%;
+    left: 40%;
 }
   .signup-form h2 {
     margin-bottom: 20px;

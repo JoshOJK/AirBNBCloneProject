@@ -3,10 +3,17 @@ body.active-modal {
 }
 
 .btn-modal {
-    padding: 10px 20px;
+    padding: 10px;
     display: block;
-    margin: 100px auto 0;
-    font-size: 18px;
+    font-size: small;
+    background-color: rgb(255,90,94);
+    border-radius: 10px;
+    border-color: #f1f1f1;
+    color: white;
+}
+.btn-modal:hover {
+    background-color: rgb(200,80,94);
+    box-shadow: 1px -1px 27px 0px rgba(0,0,0,0.62) inset;
 }
 
 .modal, .overlay {

@@ -5,6 +5,7 @@ import { useHistory, NavLink } from "react-router-dom";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import "./Navigation.css"
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -45,20 +46,20 @@ function ProfileButton({ user }) {
 
   return (
     <>
+    <div className="menubutton-container">
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
+      </div>
+      <div className="info-container">
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.firstName} {user.lastName}</li>
+            <li>Hello, {user.username}</li>
             <li>{user.email}</li>
-            <li>
-
-                <NavLink to={`/user/${sessionUser.id}/spots`}>Manage Spots</NavLink>
-
-</li>
+              <li>
+                <NavLink className="manage-button" to={`/user/${sessionUser.id}/spots`}>Manage Spots</NavLink>
+              </li>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
@@ -76,6 +77,7 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
+      </div>
     </>
   );
 }

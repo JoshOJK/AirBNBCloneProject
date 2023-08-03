@@ -12,15 +12,6 @@ function Navigation({ isLoaded }) {
   const [showDropdown, setShowDropdown] = useState(false);
 
 
-  const toggleDropdown = () => {
-    setShowDropdown(prevState => !prevState);
-  };
-
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-  };
-
   return (
     <ul className='navbar'>
       <li className='homepagelink'>
