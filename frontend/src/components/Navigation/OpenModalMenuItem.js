@@ -14,7 +14,7 @@ function OpenModalMenuItem({
   };
 
   return (
-    <div onClick={() =>{ if(!setModalContent) setOnModalClose(true)}}>
+    <div className="container" onClick={() =>{ if(!setModalContent) setOnModalClose(true)}}>
     <button onClick={onClick} className='btn-modal'>{itemText}</button>
     {setModalContent &&
     <div>

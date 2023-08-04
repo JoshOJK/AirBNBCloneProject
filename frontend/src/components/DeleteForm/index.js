@@ -22,9 +22,13 @@ const DeleteForm = ({spot}) => {
 
     return (
         <div className="delete-container">
-        <h2 className="delete-text">You are about to delete your spot are you sure you'd like to delete your spot</h2>
-            <button onClick={() => handleDelete()}>YES</button>
-            <button onClick={() => window.location.reload()}>NO</button>
+            <h2 className="borp">Confirm Delete</h2>
+        <p className="delete-text">Are you sure you want to remove this spot
+        from the listings?</p>
+            <div className="button57-container">
+            <button onClick={() => handleDelete()}>YES (Delete Spot)</button>
+            <button id="no-button1"onClick={() => window.location.reload()}>NO (Keep Spot)</button>
+            </div>
         </div>
     )
 }

@@ -165,7 +165,7 @@ router.get('/', validateQuery, async (req, res) => {
         [sequelize.fn("ROUND", sequelize.fn("AVG", sequelize.col("stars")), 2), "avgRating"]
         ], group: ["Spot.id"]
     })
-        const avgRating = spotRating.dataValues.avgRating;
+        const avgRating = Number(spotRating.dataValues.avgRating).toFixed(2);
 
         if(spotRating) spot.dataValues.avgRating = avgRating
 
@@ -224,6 +224,7 @@ router.get('/:spotId', requireAuth, async (req, res, next) => {
         group: ["Spot.id", "Owner.id", "SpotImages.id"],
     });
 
+
     if (spot) {
         const response = {
             id: spot.id,
@@ -240,7 +241,7 @@ router.get('/:spotId', requireAuth, async (req, res, next) => {
             createdAt: spot.createdAt,
             updatedAt: spot.updatedAt,
             numReviews: spot.getDataValue("numReviews"),
-            avgStarRating: spot.getDataValue("avgStarRating"),
+            avgStarRating: Number(spot.getDataValue("avgStarRating")).toFixed(2),
             SpotImages: spot.SpotImages,
             Owner: spot.Owner,
         };
@@ -340,7 +341,9 @@ router.get('/:spotId/reviews', async (req, res, next) => {
         {model: ReviewImage,
             attributes: ["id","url"]
         }
-    ]
+    ],
+    order: [["createdAt", "DESC"]]
+
     })
 
     if(reviews.length) return res.json({Reviews: reviews})

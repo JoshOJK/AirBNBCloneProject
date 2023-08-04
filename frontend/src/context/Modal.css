@@ -15,6 +15,9 @@ body.active-modal {
     background-color: rgb(200,80,94);
     box-shadow: 1px -1px 27px 0px rgba(0,0,0,0.62) inset;
 }
+.container {
+    border-radius: 5px;
+}
 
 .modal, .overlay {
     width: 100vw;

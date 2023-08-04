@@ -54,8 +54,8 @@ function ProfileButton({ user }) {
       <div className="info-container">
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
-            <li>Hello, {user.username}</li>
+          <div className="user-info-nav">
+            <li className="introduction">Hello, {user.username}</li>
             <li>{user.email}</li>
               <li>
                 <NavLink className="manage-button" to={`/user/${sessionUser.id}/spots`}>Manage Spots</NavLink>
@@ -63,7 +63,7 @@ function ProfileButton({ user }) {
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
-          </>
+          </div>
         ) : (
           <>
             <OpenModalMenuItem

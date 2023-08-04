@@ -1,191 +1,117 @@
-/* Add the following styles to your existing CSS */
+/* CSS */
+.spot-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-/* Custom styles for the reviews section */
+.spot-details {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.image-gallery {
+  margin-bottom: 20px;
+}
+
+.image-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.address-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.address-container i {
+  margin-right: 5px;
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.price-container span.price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.reserve-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .spot-reviews {
-  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.starimg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
 .review {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .review-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .review-person {
-  font-size: 16px;
   font-weight: bold;
-  color: #0070c9;
 }
 
 .review-date {
-  font-size: 14px;
+  font-size: 12px;
   color: #888;
 }
 
 .review-text {
-  font-size: 16px;
-  line-height: 1.6;
+  margin-top: 5px;
+}
+img.inactive {
+  width: 400px;
+  height: 200px;
 }
 
 .no-reviews {
-  font-size: 16px;
-  text-align: center;
-  color: #888;
-  margin-top: 20px;
-}
-
-.expand-gallery-link {
-  font-size: 12px; /* Adjust font size to make it smaller */
-  color: grey; /* Link text color */
-  text-decoration: underline; /* Add underline effect */
-  cursor: pointer;
-  transition: color 0.3s ease; /* Add smooth transition for color change */
-}
-
-/* On hover, change the link color for a more modern look */
-.expand-gallery-link:hover {
-  color: black; /* Lighter shade of the link color on hover */
-}
-
-/* Optional: If you want to make the link look pressed when clicked */
-
-/* Additional styling for the spot details section */
-
-.image-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* Default small size for all images */
-.image-gallery img {
-  width: 100px;
-  height: auto;
-  margin: 5px; /* Optional: Add some margin between images */
-}
-
-/* Larger size for the first image */
-.image-gallery img:first-child {
-  width: 200px;
-  height: auto;
-  margin: 5px; /* Optional: Add some margin for consistency */
-}
-
-/* Stacking the rest of the images on top of each other with a max height of 2 images */
-.image-gallery img:not(:first-child) {
-  display: none;
-}
-
-/* Show the first two images when the container has the "expanded" class */
-.image-gallery.expanded img:not(:first-child) {
-  display: block;
-}
-
-/* Add any additional styles for the images as needed */
-.image-gallery img.active {
-  /* Styles for the active image (if applicable) */
-}
-.spot-details h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-.image-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.image-gallery img:not(:first-child) {
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-  width: 100px;
-  height: auto;
-  margin: 5px; /* Optional: Add some margin between images */
-}
-
-/* Larger size for the first image */
-.image-gallery img:first-child {
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-  width: 200px;
-  height: auto;
-  margin: 5px; /* Optional: Add some margin for consistency */
-}
-
-
-
-.spot-details .image-gallery img:hover {
-  transform: scale(1.1);
-}
-
-.spot-details .address-container {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color: #999;
-  margin-bottom: 10px;
-}
-
-.spot-details .address-container i {
-  margin-right: 5px;
-}
-
-.spot-details .description {
-  font-size: 16px;
-  line-height: 1.6;
   margin-bottom: 20px;
 }
 
-.spot-details .price-container {
-  display: flex;
-  align-items: center;
-}
-
-.spot-details .price-container .price {
-  font-size: 24px;
-  margin-right: 10px;
-}
-
-.spot-details .book-btn {
-  background-color: #ff5a5f;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-.spot-details .book-btn:hover {
-  background-color: #e60000;
-}
-.spot-container {
+.new-review-button {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-/* Style for the "review-button" class */
-.review-button {
-  display: inline;
-  color: grey;
-  text-decoration: underline;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* Hover effect for the "review-button" class */
-.review-button:hover {
-  color: black;
 }

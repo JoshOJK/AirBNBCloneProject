@@ -75,11 +75,14 @@ let throwError;
 
 return (
     <form onSubmit={handleNewReview} className="new-review-form">
+        <div className="container">
+    <h1>How was your Stay</h1>
         <div className="error-message">{throwError}</div>
-        <textarea placeholder="How was your stay?" value={review} onChange={(e) => setReview(e.target.value)}>
+        <textarea className="review-textarea" placeholder="Leave your review here..." value={review} onChange={(e) => setReview(e.target.value)}>
         </textarea>
-        <div >{avgRating()}</div>
+        <div className="rating">{avgRating()} Stars</div>
         <button type="submit" disabled={review.length < 10} >Submit Your Review</button>
+        </div>
     </form>
 )
 

@@ -3,13 +3,47 @@
   font-size: 14px;
 }
 /* Add the following styles to your existing CSS */
-
+.general-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+.info {
+  padding-bottom: 5px;
+}
+.description-textarea {
+  width: 428px;
+  height: 100px;
+  resize: none;
+}
 .create-spot-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
   }
+  .description-container {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+  }
 
+  .name-container {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+  }
+
+  .price-container {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+  }
+  .images-container {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+  }
+  .image-url {
+    padding-top: 5px;
+  }
 
   .create-spot-form {
     display: flex;

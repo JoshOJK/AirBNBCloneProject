@@ -16,7 +16,7 @@ const SpotDetails = () => {
   const review = useSelector((state) => state.reviews[id])
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [galleryExpanded, setGalleryExpanded] = useState(false);
-
+  console.log(sessionUser)
 
 
     useEffect(() => {
@@ -33,11 +33,7 @@ const SpotDetails = () => {
     setCurrentImageIndex(index);
   };
 
-  const handleExpandGallery = () => {
-    setGalleryExpanded(!galleryExpanded);
-    const gallery = document.querySelector(".image-gallery");
-    gallery.classList.toggle("expanded");
-  };
+
 
 
   return (
@@ -46,6 +42,7 @@ const SpotDetails = () => {
     <div>
       <div className="spot-details">
         <h1>{spot?.name}</h1>
+        <span className="address">{spot?.city}, {spot?.state}, {spot?.country}</span>
         <div className="image-gallery">
           {spot?.SpotImages && spot?.SpotImages.map((image, index) => (
             <img
@@ -53,37 +50,43 @@ const SpotDetails = () => {
               src={image?.url}
               alt="Spot Preview"
               onClick={() => handleImageChange(index)}
-              className={index === currentImageIndex ? "active" : ""}
+              className={index === currentImageIndex ? "active" : "inactive"}
             />
           ))}
         </div>
-        {spot?.SpotImages && spot?.SpotImages.length > 1 && (
-  <a href="#" className="expand-gallery-link" onClick={handleExpandGallery}>
-    {galleryExpanded ? "Collapse Gallery" : "Expand Gallery"}
-  </a>
-)}
+
         <div className="address-container">
           <i className="fas fa-map-marker-alt"></i>
-          <span className="address">{spot?.address}, {spot?.country}</span>
         </div>
-        <p>Hosted by {sessionUser.username}</p>
+        <p>Hosted by {sessionUser?.username}</p>
         <p className="description">{spot?.description}</p>
         <div className="price-container">
           <span className="price">${spot?.price} per night</span>
-          <button className="book-btn" onClick={() => alert("Feature coming soon")}>Book Now</button>
+          <button className="reserve-btn" onClick={() => alert("Feature coming soon")}>Reserve</button>
         </div>
         {review && review.length > 0  ? (
           <div className="spot-reviews">
-            {sessionUser ? (
+            {sessionUser && sessionUser?.id !== spot.ownerId ? (
               <OpenModalMenuItem
               itemText="New Review"
               modalComponent={< CreateReviewForm />}
             />
-            ): (
+            ) : (
               <></>
             )}
 
-            <h2>Reviews</h2>
+          {review.length === 1 ? (
+            <h2><img
+            className="starimg"
+            src="https://static.vecteezy.com/system/resources/previews/001/189/080/original/star-png.png"
+            alt="Star Rating"
+          />{spot.avgStarRating} · {review.length} Review</h2>
+            ) : (
+            <h2><img
+            className="starimg"
+            src="https://static.vecteezy.com/system/resources/previews/001/189/080/original/star-png.png"
+            alt="Star Rating"
+          />{spot.avgStarRating} · {review.length}  Reviews</h2>)}
             {review?.map((review) => (
               <div key={review.id} className="review">
                 <div className="review-header">
@@ -108,11 +111,20 @@ const SpotDetails = () => {
           </div>
         ) : (
           <>
+          <div><img
+            className="starimg"
+            src="https://static.vecteezy.com/system/resources/previews/001/189/080/original/star-png.png"
+            alt="Star Rating"
+          />{spot.avgStarRating !== '0.00' ? spot.avgStarRating : "New"} </div>
           <div className="no-reviews">No reviews yet for this spot.</div>
-          <OpenModalMenuItem
-              itemText="New Review"
+          {sessionUser && spot?.ownerId === sessionUser?.id ? (
+            <></>
+          ) : (
+            <OpenModalMenuItem
+              itemText="Be the first to post a review"
               modalComponent={< CreateReviewForm />}
             />
+          )}
           </>
         )}
       </div>

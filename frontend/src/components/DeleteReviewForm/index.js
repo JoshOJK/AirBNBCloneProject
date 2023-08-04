@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteReview } from "../../store/reviews";
 import { fetchSpotDetails} from "../../store/spots";
 import {fetchSpotReviews} from "../../store/reviews"
+import "../DeleteForm/DeleteForm.css"
 
 
 const DeleteReviewForm = ({reviewId}) => {
@@ -22,9 +23,12 @@ const DeleteReviewForm = ({reviewId}) => {
 
     return (
         <div className="delete-container">
-        <h2 className="delete-text">You are about to delete your review are you sure</h2>
-            <button onClick={() => handleDelete()}>YES</button>
-            <button onClick={() => window.location.reload()}>NO</button>
+        <h2 className="borp">CONFIRM DELETE</h2>
+        <p>Are you sure youd like to delete your review?</p>
+        <div className="button57-container">
+            <button onClick={() => handleDelete()}>YES (delete review)</button>
+            <button id="no-button1" onClick={() => window.location.reload()}>NO (keep review)</button>
+            </div>
         </div>
     )
 }

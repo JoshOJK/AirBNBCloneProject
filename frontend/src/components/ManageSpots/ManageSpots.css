@@ -73,6 +73,11 @@
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+    padding-bottom: 10px;
+  }
+
+  ul.spotsTile {
+    padding-top: 20px;
   }
 
   .create-spot-link:hover {

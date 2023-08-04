@@ -30,7 +30,7 @@ const HomePage = () => {
     src="https://static.vecteezy.com/system/resources/previews/001/189/080/original/star-png.png"
     alt="Star Rating"
   />
-  {spot.avgRating ? spot.avgRating : "New"}
+  {spot.avgRating !== '0.00' ? spot.avgRating : "New"}
 </h1>
               <h2 className="spotName">{spot.name}</h2>
               <p className="price">${spot.price}/night</p>

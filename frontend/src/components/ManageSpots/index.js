@@ -39,6 +39,8 @@ if(!spotsArray.length) {
   return (
     <div className="homepage">
         <>
+        <h2>Manage Your Spots</h2>
+        <NavLink className='create-spot-link' to='/spots/new'>--Create a Destination--</NavLink>
        <ul className="spotsTile">
            {Array.isArray(spotsArray) && spotsArray?.map((spot) => (
             <div>
@@ -48,14 +50,15 @@ if(!spotsArray.length) {
                  <h1 className="citystate">{spot.city}, {spot.state} <img className="starimg" src='https://static.vecteezy.com/system/resources/previews/001/189/080/original/star-png.png' alt="Star Rating" />{spot.avgRating}</h1>
                  <h2 className="spotName">{spot.name}</h2>
                  <p className="price">${spot.price}/night</p>
-                 <NavLink to={`/spots/${spot.id}/update`}>update</NavLink>
                </li>
-
+               <div></div>
              </NavLink>
+             <NavLink to={`/spots/${spot.id}/update`}>update</NavLink>
              <OpenModalMenuItem
               itemText="Delete"
               modalComponent={<DeleteForm spot={spot.id}/>}
             />
+
              </div>
            ))}
 

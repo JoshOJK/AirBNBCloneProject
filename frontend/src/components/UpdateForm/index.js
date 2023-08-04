@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { updateUserSpot, fetchSpotDetails } from "../../store/spots";
-
+import "../CreateSpot/CreateSpot.css"
 
 
 const UpdateForm = () => {
@@ -75,7 +75,11 @@ const UpdateForm = () => {
 
     return (
         <section className="create-spot-container">
+            <h2>Create a New Spot!</h2>
+                <p>Where is you place located?</p>
+                <p>Guests will only get your exact address once they booked a reservation</p>
         <form onSubmit={handleSubmit} className="create-spot-form">
+            <div className="general-info">
             <div>
             <input
                 type="text"
@@ -85,7 +89,7 @@ const UpdateForm = () => {
                 onChange={handleStringData} />
 
                 </div>
-                <div>
+                <div className="info">
             <input
                 type="text"
                 name="address"
@@ -94,7 +98,7 @@ const UpdateForm = () => {
                 onChange={handleStringData} />
 
                 </div>
-                <div>
+                <div className="info">
             <input
                 type="string"
                 placeholder="city"
@@ -103,7 +107,7 @@ const UpdateForm = () => {
                 onChange={handleStringData} />
 
                 </div>
-                <div>
+                <div className="info">
             <input
                 type="string"
                 text="state"
@@ -112,7 +116,7 @@ const UpdateForm = () => {
                 onChange={handleStringData} />
 
                 </div>
-                <div>
+                <div className="info">
                 <input
                 type="number"
                 name="lat"
@@ -123,7 +127,7 @@ const UpdateForm = () => {
                 onChange={handleNumberData} />
 
                 </div>
-                <div>
+                <div className="info">
                 <input
                 type="number"
                 name="lng"
@@ -134,17 +138,12 @@ const UpdateForm = () => {
                 onChange={handleNumberData} />
 
                 </div>
-                <div>
-            <input
-                type="string"
-                name="name"
-                placeholder="Name"
-                value={data.name}
-                onChange={handleStringData} />
-
-                </div>
-                <div>
+                <div className="description-container">
+                <h2>Describe your place to guests</h2>
+                <p>Mention the best features of your space, any special
+                amenitites like fast wifi or parking, and what you love about the neighboorhood</p>
             <textarea
+            className="description-textarea"
                 name="description"
                 type="string"
                 placeholder="Description"
@@ -153,7 +152,22 @@ const UpdateForm = () => {
 
 
                 </div>
-                <div>
+                <div className="name-container">
+                <h2>Create a title for your spot</h2>
+                <p>Catch guests' attention with a spot title that highlights what makes
+                your place special.</p>
+            <input
+                type="string"
+                name="name"
+                placeholder="Name"
+                value={data.name}
+                onChange={handleStringData} />
+
+                </div>
+                <div className="price-container">
+                <h2>Set a base price for your spot</h2>
+                <p>Competitive pricing can help your listing stand out and rank higher
+                    in search results.</p>
             <input
                 type="number"
                 name="price"
@@ -163,7 +177,9 @@ const UpdateForm = () => {
                 onChange={handleNumberData} />
 
                 </div>
-            <div>
+            <div className="images-container">
+            <h2>Liven up your spot with photos</h2>
+                <p>Submit a link to at least one photo to publish your spot.</p>
             <input
                 type="string"
                 name="previewImage"
@@ -171,6 +187,7 @@ const UpdateForm = () => {
                 value={data.previewImage}
                 onChange={handleStringData}/>
 
+            </div>
             </div>
             <button type="submit" className="create-spot-btn" >Update Spot</button>
         </form>

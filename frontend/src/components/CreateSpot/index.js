@@ -117,8 +117,11 @@ const errors = {};
 
 return (
     <section className="create-spot-container">
+        <h2>Create a New Spot!</h2>
+        <p>Where is you place located?</p>
+        <p>Guests will only get your exact address once they booked a reservation</p>
         <form onSubmit={handleNewSpot} className="create-spot-form">
-            <div>
+            <div className="general-info">
             <input
                 type="country"
                 placeholder="country"
@@ -127,8 +130,7 @@ return (
                 {errors.country && (
                     <p className='error-create'>{errors.country}</p>
                 )}
-                </div>
-                <div>
+                <div className="info">
             <input
                 type="string"
                 placeholder="address"
@@ -138,7 +140,7 @@ return (
                     <p className='error-create'>{errors.address}</p>
                 )}
                 </div>
-                <div>
+                <div className="info">
             <input
                 type="string"
                 placeholder="city"
@@ -148,7 +150,7 @@ return (
                     <p className='error-create'>{errors.city}</p>
                 )}
                 </div>
-                <div>
+                <div className="info">
             <input
                 type="string"
                 placeholder="STATE"
@@ -158,7 +160,7 @@ return (
                     <p className='error-create'>{errors.state}</p>
                 )}
                 </div>
-                <div>
+                <div className="info">
                 <input
                 type="number"
                 placeholder="Latitutde"
@@ -170,7 +172,7 @@ return (
                     <p className='error-create'>{errors.lat}</p>
                 )}
                 </div>
-                <div>
+                <div className="info">
                 <input
                 type="number"
                 placeholder="Longitude"
@@ -182,20 +184,15 @@ return (
                     <p className='error-create'>{errors.lng}</p>
                 )}
                 </div>
-                <div>
-            <input
-                type="string"
-                placeholder="Name"
-                value={name}
-                onChange={updateName} />
-                {errors.name && (
-                    <p className='error-create'>{errors.name}</p>
-                )}
                 </div>
-                <div>
-            <input
+                <div className="description-container">
+                <h2>Describe your place to guests</h2>
+                <p>Mention the best features of your space, any special
+                amenitites like fast wifi or parking, and what you love about the neighboorhood</p>
+            <textarea
+            className="description-textarea"
                 type="string"
-                placeholder="Description"
+                placeholder="please write atleast 30 characters"
                 value={description}
                 onChange={updateDescription} />
                 {errors.description && (
@@ -203,7 +200,23 @@ return (
                 )}
 
                 </div>
-                <div>
+                <div className="name-container">
+                <h2>Create a title for your spot</h2>
+                <p>Catch guests' attention with a spot title that highlights what makes
+                your place special.</p>
+            <input
+                type="string"
+                placeholder="Name of your spot"
+                value={name}
+                onChange={updateName} />
+                {errors.name && (
+                    <p className='error-create'>{errors.name}</p>
+                )}
+                </div>
+                <div className="price-container">
+                <h2>Set a base price for your spot</h2>
+                <p>Competitive pricing can help your listing stand out and rank higher
+                    in search results.</p>
             <input
                 type="number"
                 placeholder="Price per Night (USD)"
@@ -214,7 +227,9 @@ return (
                     <p className='error-create'>{errors.price}</p>
                 )}
                 </div>
-            <div>
+            <div className="images-container">
+            <h2>Liven up your spot with photos</h2>
+                <p>Submit a link to at least one photo to publish your spot.</p>
             <input
                 type="string"
                 placeholder="Preview Image Url"
@@ -223,10 +238,9 @@ return (
                 {errors.previewImage && (
                     <p className='error-create'>{errors.previewImage}</p>
                 )}
-            </div>
-                <div>
+                <div >
                     {urls.map((url, index)=> (
-                        <div key={index}>
+                        <div className="image-url"key={index}>
                 <input
                 type="string"
                 placeholder="Image Url"
@@ -237,6 +251,7 @@ return (
                     setUrls(newUrls)}} />
                     </div>
                     ))}
+                </div>
                 </div>
             <button type="submit" className="create-spot-btn" disabled={validSubmit}>Create Spot</button>
         </form>

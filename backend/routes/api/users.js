@@ -89,6 +89,8 @@ router.post(
       ],
       group: ["Spot.id"],
     })
+
+
     for (const spot of spots) {
       const previewImage = await SpotImage.findOne({
           attributes: ['url'],

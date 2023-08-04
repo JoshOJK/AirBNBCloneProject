@@ -12,6 +12,24 @@
     background-color: white;
     border: 1px solid black;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 35%;
+    left: 45%;
+}
+
+.review-textarea {
+    width: 200px;
+    height: 100px;
+    resize: none;
+}
+.container {
+    padding: 15px;
+}
+.rating {
+    padding-bottom: 5px;
+}
+.container button {
+    background-color: #ff5a5f;
+    color: white;
+    border: 1px solid black;
+    border-radius: 3px;
 }
