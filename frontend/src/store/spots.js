@@ -81,10 +81,10 @@ export const createSpotImage = (spotId, imageUrl) => async (dispatch) => {
         body: JSON.stringify(imageUrl), // Ensure imageUrl is correctly formatted
       });
 
+      if(res.ok) { const spotImage = await res.json();
+        dispatch(createImage(spotId, spotImage));
+        return spotImage;}
 
-      const spotImage = await res.json();
-      dispatch(createImage(spotId, spotImage));
-      return spotImage;
 
 }
 
