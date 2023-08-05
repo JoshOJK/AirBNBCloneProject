@@ -213,7 +213,7 @@ return (
                     <p className='error-create'>{errors.name}</p>
                 )}
                 </div>
-                <div className="price-container">
+                <div className="price-container0">
                 <h2>Set a base price for your spot</h2>
                 <p>Competitive pricing can help your listing stand out and rank higher
                     in search results.</p>

@@ -53,11 +53,13 @@ if(!spotsArray.length) {
                </li>
                <div></div>
              </NavLink>
-             <NavLink to={`/spots/${spot.id}/update`}>update</NavLink>
+             <div className="manage-button-container">
+             <a  href={`/spots/${spot.id}/update`} ><button className="update-button" >update</button></a>
              <OpenModalMenuItem
               itemText="Delete"
               modalComponent={<DeleteForm spot={spot.id}/>}
             />
+            </div>
 
              </div>
            ))}

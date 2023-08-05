@@ -1,24 +1,42 @@
 /* CSS */
 .spot-container {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
+  display: flex;;
   margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  flex-direction: column;
+}
+.information-container-details {
+  max-width: 2000px;
+  display: flex;
+  flex-direction: column;
+}
+.under-image-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid 1px black;
 }
 
 .spot-details {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  column-width: auto;
 }
 
-h1 {
+.spot-details h1 {
   font-size: 28px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .image-gallery {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .image-gallery img {
@@ -44,25 +62,36 @@ h1 {
   margin-bottom: 20px;
 }
 
-.price-container {
+.reserve-rating-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid black;
+  width: fit-content;
+  align-self: flex-end;
   margin-bottom: 20px;
 }
+.create-review-button-modal {
+  width: fit-content;
+}
 
-.price-container span.price {
-  font-size: 24px;
+.price-container {
+  font-size: 18px;
   font-weight: bold;
+  width: max-content;
 }
 
 .reserve-btn {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #ff5a5f;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 300px;
 }
 
 .spot-reviews {
@@ -102,9 +131,19 @@ h1 {
 .review-text {
   margin-top: 5px;
 }
+
+img.active {
+  width: 60%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
 img.inactive {
-  width: 400px;
-  height: 200px;
+  width: 40%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 .no-reviews {
@@ -114,4 +153,9 @@ img.inactive {
 .new-review-button {
   display: flex;
   justify-content: center;
+}
+
+.address-top {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
