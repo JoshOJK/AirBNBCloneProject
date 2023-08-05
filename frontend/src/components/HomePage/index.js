@@ -23,15 +23,18 @@ const HomePage = () => {
           <NavLink className="spotsNavigation" to={`/spots/${spot.id}`} title={spot.name} key={key}>
             <li key={spot.id} className="singularSpot">
               <img className='spotImage' src={spot.previewImage} alt="Spot Preview" />
-              <h1 className="citystate">
-  {spot.city}, {spot.state}{" "}
-  <img
-    className="starimg"
-    src="https://static.vecteezy.com/system/resources/previews/001/189/080/original/star-png.png"
-    alt="Star Rating"
-  />
-  {spot.avgRating !== '0.00' ? spot.avgRating : "New"}
-</h1>
+              <div className="spot-details-tag">
+              <div>
+                <h1 className="citystate">{spot.city}, {spot.state}{" "}</h1>
+                </div>
+              <div className="star-and-star-rating">
+                <img
+                  className="starimg"
+                  src="https://static.vecteezy.com/system/resources/previews/001/189/080/original/star-png.png"
+                  alt="Star Rating"
+                />{spot.avgRating !== '0.00' ? spot.avgRating : "New"}
+              </div>
+              </div>
               <h2 className="spotName">{spot.name}</h2>
               <p className="price">${spot.price}/night</p>
             </li>
