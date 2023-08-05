@@ -76,9 +76,6 @@ const errors = {};
     if(!previewImage) {
         errors.previewImage = "Preview Image is required"
     }
-    if(!urls) {
-        errors.url = "Urls need to be a png, jpg, or a jpeg"
-    }
     setErrors(errors)
 
     if(Object.values(errors).length === 0) {
@@ -108,7 +105,7 @@ const errors = {};
             });
             history.push(`/spots/${createdSpot.id}`);
           } catch (error) {
-            console.log("Spot creation failed:", error);
+            console.error("Spot creation failed:", error);
           }
           setValidSubmit(false)
         }
