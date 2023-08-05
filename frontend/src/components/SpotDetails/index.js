@@ -15,7 +15,6 @@ const SpotDetails = () => {
   const spot = useSelector((state) => state.spots[id]);
   const review = useSelector((state) => state.reviews[id])
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  console.log(spot)
 
 
     useEffect(() => {

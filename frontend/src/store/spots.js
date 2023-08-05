@@ -19,10 +19,9 @@ const loadDetails = (spot) => ({
     spot,
 })
 
-const createImage = (spotId, imageUrl) => ({
+const createImage = (spotImage) => ({
     type: CREATE_URL,
-    spotId,
-    imageUrl
+    spotImage
 })
 
 const removeSpot = (spotId) => ({
@@ -81,9 +80,11 @@ export const createSpotImage = (spotId, imageUrl) => async (dispatch) => {
         body: JSON.stringify(imageUrl), // Ensure imageUrl is correctly formatted
       });
 
-      if(res.ok) { const spotImage = await res.json();
-        dispatch(createImage(spotId, spotImage));
-        return spotImage;}
+      if(res.ok) {
+        const spotImage = await res.json();
+        dispatch(createImage(spotImage));
+        return spotImage;
+    }
 
 
 }
@@ -134,6 +135,9 @@ const spotsReducer = (state = {}, action) => {
             return newState
         case SPOT_DETAIL:
                 newState[action.spot.id] = action.spot;
+                return newState;
+        case CREATE_URL:
+                newState[action.spotImage.id] = action.spotImage;
                 return newState;
         case USER_SPOTS:
             newState = {};
