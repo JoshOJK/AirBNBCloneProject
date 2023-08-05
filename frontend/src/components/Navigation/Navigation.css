@@ -93,6 +93,13 @@ body {
     display: flex;
 }
 
+.profile-button-dropdown {
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
 .navbar {
     display: flex;
     align-items: center;
