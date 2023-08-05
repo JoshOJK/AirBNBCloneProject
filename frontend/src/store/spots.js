@@ -101,17 +101,12 @@ export const createSpot = (spotData) => async (dispatch) => {
 }
 
 export const fetchSpotDetails = (spotId) => async dispatch => {
-    try{
-    const res = await csrfFetch(`/api/spots/${spotId}`)
 
+        const res = await csrfFetch(`/api/spots/${spotId}`)
     if(res.ok) {
-        const details = await res.json()
-        dispatch(loadDetails(details))
-        return details;
+        const data = await res.json()
+        dispatch(loadDetails(data))
     }
-}catch(err) {
-    console.error(err)
-}
 }
 
 export const fetchSpots = () => async dispatch => {

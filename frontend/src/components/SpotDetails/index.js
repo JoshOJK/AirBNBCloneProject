@@ -32,20 +32,21 @@ const SpotDetails = () => {
   };
 
 
-
+console.log(spot.SpotImages)
 
   return (
     <div className="spot-container">
   {spot && (
+    console.log(spot),
     <div className="information-container-details">
       <div className="spot-details">
         <div>
         <h1>{spot?.name}</h1>
         <span className="address-top"><i className="fas fa-map-marker-alt"></i>{spot?.city}, {spot?.state}, {spot?.country}</span>
         <div className="image-gallery">
-          {spot?.SpotImages && spot?.SpotImages.map((image, index) => (
+          {spot?.SpotImages && spot?.SpotImages?.map((image, index) => (
             <img
-              key={image.id}
+              key={image?.id}
               src={image?.url}
               alt="Spot Preview"
               onClick={() => handleImageChange(index)}
@@ -137,13 +138,18 @@ const SpotDetails = () => {
             alt="Star Rating"
           />{spot.avgStarRating !== '0.00' ? spot.avgStarRating : "New"} </div>
           <div className="no-reviews">No reviews yet for this spot.</div>
-          {sessionUser && spot?.ownerId === sessionUser?.id ? (
-            <></>
+          {sessionUser && spot?.ownerId !== sessionUser?.id ? (
+            <>
+             <OpenModalMenuItem
+             itemText="Be the first to post a review"
+             modalComponent={< CreateReviewForm />}
+
+           />
+           </>
+
           ) : (
-            <OpenModalMenuItem
-              itemText="Be the first to post a review"
-              modalComponent={< CreateReviewForm />}
-            />
+            <></>
+
           )}
           </div>
         )}

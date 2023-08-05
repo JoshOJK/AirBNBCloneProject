@@ -182,7 +182,7 @@ router.get('/', validateQuery, async (req, res) => {
 
 
 
-router.get('/:spotId', requireAuth, async (req, res, next) => {
+router.get('/:spotId', async (req, res, next) => {
     const spotId = req.params.spotId;
 
     const spot = await Spot.findOne({
