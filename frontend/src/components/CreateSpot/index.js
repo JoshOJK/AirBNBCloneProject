@@ -98,7 +98,7 @@ const errors = {};
             await dispatch(
               createSpotImage(createdSpot.id, {preview: true, url: previewImage})
             );
-            urls.forEach(async (url) => {
+            urls?.forEach(async (url) => {
               if (url) {
                 await dispatch(createSpotImage(createdSpot.id, {preview: false, url: url}));
               }
