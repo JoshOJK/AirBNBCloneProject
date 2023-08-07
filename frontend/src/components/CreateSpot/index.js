@@ -236,7 +236,7 @@ return (
                     <p className='error-create'>{errors.previewImage}</p>
                 )}
                 <div >
-                    {urls.map((url, index)=> (
+                    {urls?.map((url, index)=> (
                         <div className="image-url"key={index}>
                 <input
                 type="string"
