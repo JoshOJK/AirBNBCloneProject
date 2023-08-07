@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useModal } from '../../context/Modal';
 import "../../context/Modal.css"
 
 function OpenModalMenuItem({

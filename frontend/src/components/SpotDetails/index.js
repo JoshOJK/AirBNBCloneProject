@@ -97,7 +97,7 @@ console.log(spot.SpotImages)
             className="starimg"
             src="https://static.vecteezy.com/system/resources/previews/001/189/080/original/star-png.png"
             alt="Star Rating"
-          /> {spot?.avgStarRating !== '0.00' ? spot?.avgStarRating : "New"} · {review?.length}  Reviews</h2>
+          /> {spot?.avgStarRating !== '0.00' ? spot?.avgStarRating : "New"} · {review?.length} {review.length !== 1 ? "Reviews" : "Review"}</h2>
             {sessionUser && sessionUser?.id !== spot?.ownerId ? (
               <div className="create-review-button-modal">
               <OpenModalMenuItem
