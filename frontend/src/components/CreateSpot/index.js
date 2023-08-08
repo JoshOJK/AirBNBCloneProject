@@ -76,6 +76,9 @@ const errors = {};
     if(!previewImage) {
         errors.previewImage = "Preview Image is required"
     }
+    if(!urls) {
+        errors.urls = "Image url must end in a .png, .jpg, or .jpeg"
+    }
     setErrors(errors)
 
     if(Object.values(errors).length === 0) {
