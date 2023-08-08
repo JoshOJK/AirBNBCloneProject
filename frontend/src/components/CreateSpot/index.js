@@ -96,8 +96,11 @@ const errors = {};
             description,
             price
         };
+
        try {
+
             const createdSpot = await dispatch(createSpot(safeSpot));
+            if(createdSpot) {
             await dispatch(
               createSpotImage(createdSpot.id, {preview: true, url: previewImage})
             );
@@ -106,6 +109,7 @@ const errors = {};
                 await dispatch(createSpotImage(createdSpot.id, {preview: false, url: url}));
               }
             });
+        }
             history.push(`/spots/${createdSpot.id}`);
           } catch (error) {
             console.error("Spot creation failed:", error);
