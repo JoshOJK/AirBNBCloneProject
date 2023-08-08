@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       url: {
-        type: Sequelize.STRING(1234),
+        type: Sequelize.TEXT,
         unique: true,
         allowNull: false
       },
